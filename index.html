@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MQTT.js</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <script src="node_modules/mqtt/dist/mqtt.min.js"></script>
+  <script src="node_modules/d3/dist/d3.min.js"></script>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "state state"
+        "bar trend"
+        "data data";
+      align-items: center;
+      justify-items: center;
+      gap: 10px;
+      padding: 10px;
+    }  
+    
+    .grid-header {
+      grid-area: header;
+      width: 500px;
+      height: 100px;
+    }
+    
+    .grid-state {
+      grid-area: state;
+      width: 100px;
+      height: 100px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    #state {
+      display: flex;
+      gap: 20px;
+    }
+
+    #led {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: gray;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .grid-bar {
+      grid-area: bar;
+      width: 500px;
+      height: 300px;
+    }
+
+    .grid-trend {
+      grid-area: trend;
+      width: 500px;
+      height: 300px;
+    }
+
+    .grid-data {
+      grid-area: data;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid">
+    <div class="grid-header">
+      <h1>MQTT + D3.js</h1>
+    </div>
+    <div class="grid-state">
+      <div id="state">
+        <h4>State: </h4>
+        <div id="led"></div>
+      </div>
+    </div>
+    <div class="grid-bar">
+      <div id="bar"></div>
+    </div>
+    <div class="grid-trend">
+      <div id="trend"></div>
+    </div>
+    <div class="grid-data">
+      <pre>
+        <code id="data"></code>
+      </pre>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+
+</html>
